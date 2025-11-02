@@ -26,7 +26,7 @@ const Landing = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-600/20 to-transparent blur-3xl" />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto text-center space-y-12">
+      <div className="relative max-w-7xl mx-auto text-center space-y-12">
         {/* Hero Headline */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -83,10 +83,6 @@ const Landing = () => {
           <Link href="/event" className="group">
             <motion.div
               className="relative inline-block"
-              style={{
-                transform: `rotateX(${(mousePosition.y - window.innerHeight / 2) * 0.02}deg) rotateY(${(mousePosition.x - window.innerWidth / 2) * 0.02}deg)`,
-                transition: 'transform 0.2s ease-out',
-              }}
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.98 }}
             >
