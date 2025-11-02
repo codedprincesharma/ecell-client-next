@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, Clock, MapPin, ArrowRight, BadgeDollarSign } from "lucide-react";
 
 const UpcomingEventsSection = ({ upcoming, formatDate }) => {
   return (
@@ -66,7 +66,16 @@ const UpcomingEventsSection = ({ upcoming, formatDate }) => {
                         <MapPin className="h-4 w-4" />
                         <span>{event.venue}</span>
                       </div>
+                      <div className="flex items-center gap-2 ">
+                        <BadgeDollarSign className="h-5 w-4" />
+                        <span >
+                          free
+                        </span>
+                      </div>
                     </div>
+
+
+
 
                     {/* Title */}
                     <h3 className="text-3xl md:text-4xl font-black mb-4 tracking-tight group-hover:text-blue-500 transition-colors duration-300">
@@ -88,6 +97,8 @@ const UpcomingEventsSection = ({ upcoming, formatDate }) => {
                       View Details
                       <ArrowRight className="h-5 w-5" />
                     </Link>
+
+
 
                     <div className="text-right">
                       <span className="block text-xs uppercase tracking-widest text-blue-500/60 font-medium">

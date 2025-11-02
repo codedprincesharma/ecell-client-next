@@ -23,11 +23,11 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop + Mobile Navbar */}
-      <nav className="bg-white/50 backdrop-blur-md fixed top-0 right-0 left-0 text-black px-6 shadow-md z-10">
+      <nav className="bg-white/30 backdrop-blur-md border   fixed fixed top-0 right-0 left-0 text-black px-6 shadow-md z-10">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 py-3">
-            <img className="w-14" src="/logo.png" alt="E-cell Logo" />
+            <img className="w-14" src="https://ecellhit.vercel.app/logo.png" alt="E-cell Logo" />
             <h1 className="text-xl capitalize font-serif">E-cell HIT haldia</h1>
           </Link>
 

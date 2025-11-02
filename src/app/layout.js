@@ -1,8 +1,8 @@
 // src/app/layout.jsx
+import Loader from "@/components/events/EventLoading";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { GeistSans, GeistMono } from "next/font/google";
-
 
 
 export const metadata = {
@@ -12,10 +12,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scrollbar-hide">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+      </head>
       <body>
+      <Loader/>
         <Navbar />
-        <main className="pt-16 min-h-screen">
+        <main className=" scrollbar-hide min-h-screen">
           {children}
         </main>
       </body>
