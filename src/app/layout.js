@@ -2,6 +2,7 @@
 import Loader from "@/components/events/EventLoading";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer"
 import { GeistSans, GeistMono } from "next/font/google";
 
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         <main className=" scrollbar-hide min-h-screen">
           {children}
         </main>
+        <Footer/>
       </body>
     </html>
   );

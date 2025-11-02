@@ -111,7 +111,7 @@ export default function Marquee() {
       className="relative w-full py-20 px-6 overflow-hidden bg-black"
     >
       {/* Subtle Blue Ambient Glow */}
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
+      <div className="fixed inset-0  pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto">
         {/* Heading with Flipping Word */}

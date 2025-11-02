@@ -72,7 +72,7 @@ export default function Startup() {
   return (
     <section className="relative w-full py-20 px-6 overflow-hidden bg-black">
       {/* Subtle Blue Ambient Glow */}
-      <div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
+      <div className="fixed inset-0  pointer-events-none" />
 
       <div ref={containerRef} className="relative max-w-6xl mx-auto space-y-16">
         {/* Section Title */}
