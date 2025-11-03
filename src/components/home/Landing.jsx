@@ -44,7 +44,7 @@ const Landing = () => {
               </span>{' '}
               with{' '}
               <span className="inline-block relative">
-                <span className="relative z-10 text-white">You</span>
+                <span className="relative  text-white">You</span>
                 <motion.span
                   className="absolute inset-0 blur-xl bg-blue-500 opacity-70"
                   animate={{

@@ -20,15 +20,18 @@ export default function Navbar() {
     { name: "Contact", href: "/contact" },
   ];
 
+  // Profile link with avatar
+  const profileLink = { name: "Profile", href: "/profile" };
+
   return (
     <>
       {/* Desktop + Mobile Navbar */}
-      <nav className="bg-white/30 backdrop-blur-md border   fixed fixed top-0 right-0 left-0 text-black px-6 shadow-md z-10">
+      <nav className="bg-white/30 backdrop-blur-md border fixed top-0 right-0 left-0 text-black px-6 shadow-md z-10">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 py-3">
             <img className="w-14" src="https://ecellhit.vercel.app/logo.png" alt="E-cell Logo" />
-            <h1 className="text-xl capitalize font-serif">E-cell HIT haldia</h1>
+            <h1 className="text-xl capitalize font-serif text-white">E-cell HIT haldia</h1>
           </Link>
 
           {/* Desktop Menu */}
@@ -40,18 +43,41 @@ export default function Navbar() {
                 className={
                   pathname === link.href
                     ? "text-blue-500 text-xl font-extrabold font-[Orbitron]"
-                    : "text-black font-medium hover:text-blue-500 transition"
+                    : "text-white font-medium hover:text-blue-500 transition"
                 }
               >
                 {link.name}
               </Link>
             ))}
+
+            {/* Profile Button with Avatar */}
+            <Link
+              href={profileLink.href}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-200 ${
+                pathname === profileLink.href
+                  ? "ring-2 ring-blue-500"
+                  : "hover:ring-2 hover:ring-blue-400"
+              }`}
+            >
+              <img
+                src="https://ui-avatars.com/api/?name=User&background=3b82f6&color=fff&bold=true"
+                alt="User Profile"
+                className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
+              />
+              <span
+                className={`font-medium ${
+                  pathname === profileLink.href ? "text-blue-500" : "text-white"
+                }`}
+              >
+                {profileLink.name}
+              </span>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(true)} aria-label="Open menu">
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-white" />
             </button>
           </div>
         </div>
@@ -85,6 +111,23 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          {/* Profile in Mobile Menu */}
+          <Link
+            href={profileLink.href}
+            onClick={() => setIsOpen(false)}
+            className={`flex items-center space-x-3 p-2 rounded-lg transition-all ${
+              pathname === profileLink.href
+                ? "bg-blue-600 text-white"
+                : "hover:bg-gray-800 text-white"
+            }`}
+          >
+            <img
+              src="https://ui-avatars.com/api/?name=User&background=3b82f6&color=fff&bold=true"
+              alt="User Profile"
+              className="w-8 h-8 rounded-full object-cover"
+            />
+          </Link>
         </div>
       </div>
 
