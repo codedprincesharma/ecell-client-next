@@ -6,16 +6,21 @@ import ImpactStats from '@/components/home/ImpactStats'
 import Mentor from "@/components/home/Mentor";
 import TeamPreview from "@/components/home/TeamPreview";
 import TestimonialMarquee from "@/components/home/TestimonialMarquee"
-export default function Home() {
+
+
+
+export default async function Home() {
+
+
   return (
     <div className="min-h-screen items-center justify-center  font-sans bg-black ">
-      <Landing/>
-      <Marquee/>
-      <Startup/>
-      <ImpactStats/>
-      <Mentor/>
-      <TeamPreview/>
-      <TestimonialMarquee/>
+      <Landing />
+      <Marquee />
+      <Startup />
+      <ImpactStats />
+      <Mentor />
+      <TeamPreview />
+      <TestimonialMarquee />
     </div>
   );
 }
