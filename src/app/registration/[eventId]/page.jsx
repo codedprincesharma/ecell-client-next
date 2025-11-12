@@ -26,10 +26,11 @@ export default function RegistrationPage() {
 
     const fetchEvent = async () => {
       try {
+        // ✅ fetch event details from event service, not register service
         const { data } = await axios.get(
-          `http://localhost:8080/api/v1/events/${eventId}`
+          `http://localhost:3002/api/event/${eventId}`
         );
-        setEvent(data.event);
+        setEvent(data.event || data);
       } catch (err) {
         setError(err.response?.data?.message || "Event not found");
       } finally {
@@ -44,7 +45,7 @@ export default function RegistrationPage() {
   if (error || !event) return <ErrorMessage error={error || "Event not found"} />;
 
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-6">
+    <div className="min-h-screen bg-black text-white py-25 px-6">
       <div className="fixed inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
       <div className="relative max-w-4xl mx-auto">
         <RegistrationHeader event={event} />

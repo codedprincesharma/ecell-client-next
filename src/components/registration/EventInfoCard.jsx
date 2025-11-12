@@ -1,8 +1,16 @@
 // src/components/registration/EventInfoCard.jsx
 import { motion } from "framer-motion";
-import { Users, Calendar } from "lucide-react";
+import { MapPin, Calendar, Clock } from "lucide-react";
 
 export default function EventInfoCard({ event }) {
+  const formatDate = (dateString) =>
+    new Date(dateString).toLocaleDateString("en-GB", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.98 }}
@@ -14,15 +22,27 @@ export default function EventInfoCard({ event }) {
         {event.title}
         <span className="block w-24 h-px bg-blue-500/40 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </h2>
+
       <div className="flex flex-wrap gap-6 text-sm text-white/70">
+        {/* 📍 Location */}
         <div className="flex items-center gap-2">
-          <Users className="h-4 w-4 text-blue-500/80" />
-          <span>{event.venue}</span>
+          <MapPin className="h-4 w-4 text-blue-500/80" />
+          <span>{event.location || "Venue not available"}</span>
         </div>
+
+        {/* 📅 Date */}
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-blue-500/80" />
-          <span>{event.time}</span>
+          <span>{event.date ? formatDate(event.date) : "Date TBA"}</span>
         </div>
+
+        {/* ⏰ Time */}
+        {event.time && (
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-blue-500/80" />
+            <span>{event.time}</span>
+          </div>
+        )}
       </div>
     </motion.div>
   );

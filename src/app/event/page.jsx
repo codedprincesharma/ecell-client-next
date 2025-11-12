@@ -17,7 +17,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/v1/events");
+        const res = await axios.get("http://localhost:3002/api/event/all");
         const allEvents = res.data.events || [];
 
         const now = new Date();

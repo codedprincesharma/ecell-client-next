@@ -1,6 +1,8 @@
 // src/components/registration/RegistrationHeader.jsx
+"use client";
+
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 
 export default function RegistrationHeader({ event }) {
   const formatDate = (dateString) =>
@@ -8,21 +10,29 @@ export default function RegistrationHeader({ event }) {
       weekday: "long",
       day: "numeric",
       month: "long",
+      year: "numeric",
     });
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
       className="text-center mb-12"
     >
-      <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
-        Register for <span className="text-blue-500">Event</span>
+      {/* Event title */}
+      <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-3">
+        Registation Form
       </h1>
-      <div className="flex items-center justify-center gap-2 text-blue-500/80">
-        <Calendar className="h-5 w-5" />
-        <span className="font-medium text-lg">{formatDate(event.date)}</span>
-      </div>
+
+      
+
+      {/* Optional tagline or event type */}
+      {event.category && (
+        <p className="mt-3 text-white/60 font-medium tracking-wide">
+          {event.category}
+        </p>
+      )}
     </motion.div>
   );
 }

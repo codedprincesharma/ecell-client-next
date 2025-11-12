@@ -6,14 +6,14 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import DepartmentSelect from "@/components/registration/DepartmentSelect"
-import RollAndYear from "@/components/registration/RollAndYear"
+import DepartmentSelect from "@/components/registration/DepartmentSelect";
+import RollAndYear from "@/components/registration/RollAndYear";
 import FormField from "./FormField";
 import SuccessMessage from "./SuccessMessage";
 import ErrorMessage from "./ErrorMessage";
 import { CheckCircle, ArrowLeft } from "lucide-react";
 
-export default function RegistrationForm({ eventId }) {
+export default function RegistrationForm({ eventId, event }) {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -31,18 +31,32 @@ export default function RegistrationForm({ eventId }) {
     setSuccess(false);
 
     try {
+      // ✅ Match backend structure exactly
       const payload = {
-        fullName: { firstName: data.firstName, lastName: data.lastName },
+        eventId, // from props
+        title: event?.title,
+        eventName: event?.title, // alias
+        date: event?.date,
+        location: event?.location,
+        student: data.student || "", // optional (if needed from RollAndYear)
+        fullName: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+        },
         email: data.email,
         department: data.department,
-        classRollNo: data.classRollNo,
+        whatsappNumber: data.phoneNumber, // ✅ renamed
+        classRollNumber: data.classRollNo, // ✅ renamed
         year: data.year,
-        phoneNumber: data.phoneNumber,
       };
 
+      // ✅ Send to correct backend service
       const { data: res } = await axios.post(
-        `http://localhost:8080/api/v1/registation/${eventId}/register`,
-        payload
+        "http://localhost:3003/api/register",
+        payload,
+        {
+          withCredentials: true
+        }
       );
 
       if (res.success) {
@@ -86,7 +100,7 @@ export default function RegistrationForm({ eventId }) {
             name="lastName"
             register={register}
             errors={errors}
-            placeholder="Sharma"
+            placeholder="Raj"
             required
           />
         </div>
@@ -104,12 +118,12 @@ export default function RegistrationForm({ eventId }) {
         <DepartmentSelect register={register} errors={errors} />
         <RollAndYear register={register} errors={errors} />
         <FormField
-          label="Phone Number"
+          label="Phone Number (WhatsApp)"
           name="phoneNumber"
           type="tel"
           register={register}
           errors={errors}
-          placeholder="6299193036"
+          placeholder="9876543210"
           required
         />
 

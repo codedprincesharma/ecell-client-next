@@ -33,7 +33,7 @@ const PastEventsSection = ({ past, formatDate }) => {
               >
                 <div className="h-48 overflow-hidden">
                   <img
-                    src={event.banner}
+                    src={event.coverImage}   ///* ✅ fixed from event.banner *
                     alt={event.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
